@@ -6,13 +6,9 @@ import PhotoFav from '../components/PhotoFav';
 
 const PhotoDetailsModal = (props) => {
 
-  const { onClose, photos, selectedPhoto, favePhotos, toggleFave } = props;
+  const { onClose, photos, selectedPhoto, favePhotos, handleToggleFave } = props;
 
   const suggestedPhotos = Object.values(selectedPhoto.similar_photos);
-
-  //do i need this? i have this in PhotoListItem
-  const handleToggleFave = (photoId) => toggleFave(photoId);
-
 
   return (
     <div className='photo-details-modal'>
@@ -34,7 +30,7 @@ const PhotoDetailsModal = (props) => {
 
       <div className="photo-details-modal__content">
         <PhotoFav
-          handleClick={() => handleToggleFave(selectedPhoto.id)}
+          handleToggleFave={() => handleToggleFave(selectedPhoto.id)}
           favourite={favePhotos.includes(selectedPhoto.id)}
         />
         <img className='photo-details-modal__image' src={selectedPhoto.urls.full} />
@@ -54,7 +50,7 @@ const PhotoDetailsModal = (props) => {
           <PhotoList
             photos={suggestedPhotos}
             favePhotos={favePhotos}
-            toggleFave={handleToggleFave}
+            handleToggleFave={handleToggleFave}
           />
         </div>
       </div>

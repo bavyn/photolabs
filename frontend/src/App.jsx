@@ -21,7 +21,8 @@ const App = () => {
     setFavePhotos([...favePhotos, photo]);
     console.log('fave button clicked for photo:', photo);
   };
-  
+    // toggle favouriting the photo
+    const handleToggleFave = (id) => toggleFave(id);
 
   // modal
   const [modal, setModal] = useState(null);
@@ -43,13 +44,14 @@ const App = () => {
         photos={photos}
         favePhotos={favePhotos}
         toggleFave={toggleFave}
+        handleToggleFave={handleToggleFave}
         />
       {modal && <PhotoDetailsModal
         onClose={closeModal}
         photos={photos}
         selectedPhoto={selectedPhoto}
         favePhotos={favePhotos}
-        toggleFave={toggleFave}
+        handleToggleFave={handleToggleFave}
       />}
     </div>
   );
