@@ -23,6 +23,15 @@
   object-fit: cover;
 }
 
+.photo-list__footer {
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  padding-top: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
 .photo-list__user-profile {
   object-fit: cover;
   border-radius: 100%;
@@ -32,17 +41,20 @@
   height: 40px;
 }
 
-.photo-list__user-details {
-  display: flex;
-}
-
 .photo-list__user-info {
-  margin-top: 5px;
+  display: flex;
   font-weight: 700;
   font-size: 12px;
   margin-left: 8px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.photo-list__user-details {
+  margin: 0;
 }
 
 .photo-list__user-location {
   color: #838383;
+  margin: 0;
 }
