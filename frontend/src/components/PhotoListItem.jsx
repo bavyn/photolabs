@@ -15,7 +15,11 @@ const PhotoListItem = (props) => {
 
   return (
     <div className='photo-list__item'>
-      <PhotoFav handleToggleFave={() => handleToggleFave(id)} favourite={isFave} />
+      <PhotoFav
+      handleToggleFave={() => handleToggleFave(id)}
+      favourite={isFave}
+      isModal={false}
+      />
       <img className='photo-list__image' src={imageSource.regular} onClick={handleClickPhoto}></img>
       <div className='photo-list__footer'>
         <img className='photo-list__user-profile' src={profile}></img>

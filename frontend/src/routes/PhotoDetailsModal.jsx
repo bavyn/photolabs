@@ -32,6 +32,7 @@ const PhotoDetailsModal = (props) => {
         <PhotoFav
           handleToggleFave={() => handleToggleFave(selectedPhoto.id)}
           favourite={favePhotos.includes(selectedPhoto.id)}
+          isModal={true}
         />
         <img className='photo-details-modal__image' src={selectedPhoto.urls.full} />
 

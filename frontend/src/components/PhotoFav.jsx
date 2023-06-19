@@ -7,8 +7,11 @@ function PhotoFav(props) {
 
   return (
     <>
-      <PhotoFavButton handleToggleFave={props.handleToggleFave}
-      favourite={props.favourite} />
+      <PhotoFavButton
+      handleToggleFave={props.handleToggleFave}
+      favourite={props.favourite}
+      isModal={props.isModal}
+      />
     </>
   );
 }
