@@ -8,7 +8,16 @@ import useApplicationData from './hooks/useApplicationData';
 
 const App = () => {
 
-  const { favePhotos, handleToggleFave, modal, openModal, closeModal, selectedPhoto } = useApplicationData();
+  const {
+    favePhotos,
+    handleToggleFave,
+    modal,
+    openModal,
+    closeModal,
+    selectedPhoto,
+    setPhotoData,
+    setTopicData,
+  } = useApplicationData();
 
   return (
     <div className="App">
