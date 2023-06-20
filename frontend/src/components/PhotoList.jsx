@@ -5,7 +5,7 @@ import PhotoListItem from './PhotoListItem';
 
 const PhotoList = (props) => {
 
-  const { photos, favePhotos, toggleFave, onClickPhoto, handleToggleFave } = props;
+  const { photos, favePhotos, onClickPhoto, handleToggleFave } = props;
 
   const list = photos.map((photo) => (
     <PhotoListItem
@@ -16,7 +16,6 @@ const PhotoList = (props) => {
     profile={photo.user.profile}
     username={photo.user.name}
     favePhotos={favePhotos}
-    toggleFave={toggleFave}
     onClickPhoto={onClickPhoto}
     handleToggleFave={handleToggleFave}
     />

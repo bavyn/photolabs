@@ -8,7 +8,7 @@ import useApplicationData from './hooks/useApplicationData';
 
 const App = () => {
 
-  const { favePhotos, setFavePhotos, toggleFave, handleToggleFave, modal, setModal, openModal, closeModal, selectedPhoto } = useApplicationData();
+  const { favePhotos, handleToggleFave, modal, openModal, closeModal, selectedPhoto } = useApplicationData();
   
 
 
@@ -19,7 +19,6 @@ const App = () => {
         onClickPhoto={openModal}
         photos={photos}
         favePhotos={favePhotos}
-        toggleFave={toggleFave}
         handleToggleFave={handleToggleFave}
         />
       {modal && <PhotoDetailsModal

@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import photos from "../mocks/photos";
 
 export default function useApplicationData() {
@@ -33,5 +32,5 @@ export default function useApplicationData() {
   // define selectedPhoto for modal
   const selectedPhoto = photos.find((photo) => photo.id === modal);
 
-  return { favePhotos, setFavePhotos, toggleFave, handleToggleFave, modal, setModal, openModal, closeModal, selectedPhoto };
+  return { favePhotos, handleToggleFave, modal, openModal, closeModal, selectedPhoto };
 }

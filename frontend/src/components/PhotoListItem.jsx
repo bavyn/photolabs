@@ -5,7 +5,7 @@ import PhotoFav from './PhotoFav';
 
 const PhotoListItem = (props) => {
 
-  const { id, imageSource, location, profile, username, favePhotos, toggleFave, onClickPhoto, handleToggleFave } = props;
+  const { id, imageSource, location, profile, username, favePhotos, onClickPhoto, handleToggleFave } = props;
 
   // handling error to check that favePhotos is indeed an array
   const isFave = Array.isArray(favePhotos) && favePhotos.includes(id);
