@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import './App.scss';
 import HomeRoute from './routes/HomeRoute';
@@ -9,9 +9,6 @@ import useApplicationData from './hooks/useApplicationData';
 const App = () => {
 
   const { favePhotos, handleToggleFave, modal, openModal, closeModal, selectedPhoto } = useApplicationData();
-  
-
-
 
   return (
     <div className="App">
