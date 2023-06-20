@@ -120,7 +120,7 @@ export default function useApplicationData() {
 
   return {
     favePhotos: state.favPhotoIds,
-    handleToggleFave: toggleFave,
+    toggleFave,
     modal: state.displayPhotoDetails,
     openModal,
     closeModal,

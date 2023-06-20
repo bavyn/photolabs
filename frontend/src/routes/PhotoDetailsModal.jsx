@@ -6,7 +6,7 @@ import PhotoFav from '../components/PhotoFav';
 
 const PhotoDetailsModal = (props) => {
 
-  const { onClose, photos, selectedPhoto, favePhotos, handleToggleFave } = props;
+  const { onClose, photos, selectedPhoto, favePhotos, toggleFave } = props;
 
   const suggestedPhotos = Object.values(selectedPhoto.similar_photos);
 
@@ -30,7 +30,7 @@ const PhotoDetailsModal = (props) => {
 
       <div className="photo-details-modal__content">
         <PhotoFav
-          handleToggleFave={() => handleToggleFave(selectedPhoto.id)}
+          toggleFave={() => toggleFave(selectedPhoto.id)}
           favourite={favePhotos.includes(selectedPhoto.id)}
           isModal={true}
         />
@@ -51,7 +51,7 @@ const PhotoDetailsModal = (props) => {
           <PhotoList
             photos={suggestedPhotos}
             favePhotos={favePhotos}
-            handleToggleFave={handleToggleFave}
+            toggleFave={toggleFave}
           />
         </div>
       </div>

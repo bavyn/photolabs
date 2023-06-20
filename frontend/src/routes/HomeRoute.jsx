@@ -14,7 +14,7 @@ const HomeRoute = (props) => {
       photos={props.photos}
       favePhotos={props.favePhotos}
       onClickPhoto={props.onClickPhoto}
-      handleToggleFave={props.handleToggleFave}
+      toggleFave={props.toggleFave}
       />
     </div>
   );

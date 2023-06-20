@@ -10,7 +10,7 @@ const App = () => {
 
   const {
     favePhotos,
-    handleToggleFave,
+    toggleFave,
     modal,
     openModal,
     closeModal,
@@ -25,14 +25,14 @@ const App = () => {
         onClickPhoto={openModal}
         photos={photos}
         favePhotos={favePhotos}
-        handleToggleFave={handleToggleFave}
+        toggleFave={toggleFave}
         />
       {modal && <PhotoDetailsModal
         onClose={closeModal}
         photos={photos}
         selectedPhoto={selectedPhoto}
         favePhotos={favePhotos}
-        handleToggleFave={handleToggleFave}
+        toggleFave={toggleFave}
       />}
     </div>
   );

@@ -8,7 +8,7 @@ function PhotoFav(props) {
   return (
     <>
       <PhotoFavButton
-      handleToggleFave={props.handleToggleFave}
+      toggleFave={props.toggleFave}
       favourite={props.favourite}
       isModal={props.isModal}
       />
