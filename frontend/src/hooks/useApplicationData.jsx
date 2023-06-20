@@ -23,7 +23,7 @@ function reducer(state, action) {
     case ACTIONS.FAV_PHOTO_ADDED:
       return {
         ...state,
-        favPhotoIds: [...state.favPhotosIds, action.payload.photo]
+        favPhotoIds: [...state.favPhotoIds, action.payload.photo]
       };
     case ACTIONS.FAV_PHOTO_REMOVED:
       const filtered = state.favPhotoIds.filter((id) => id !== action.payload.photo
