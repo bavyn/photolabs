@@ -124,7 +124,7 @@ export default function useApplicationData() {
     modal: state.displayPhotoDetails,
     openModal,
     closeModal,
-    selectedPhoto,
+    selectedPhoto: state.selectedPhoto,
     setPhotoData,
     setTopicData,
   };
