@@ -20,38 +20,44 @@ const appInitialState = {
 
 function reducer(state, action) {
   switch (action.type) {
-    case ACTIONS.FAV_PHOTO_ADDED:
+    case ACTIONS.FAV_PHOTO_ADDED: {
       return {
         ...state,
         favPhotoIds: [...state.favPhotoIds, action.payload.photo]
       };
-    case ACTIONS.FAV_PHOTO_REMOVED:
+    }
+    case ACTIONS.FAV_PHOTO_REMOVED: {
       const filtered = state.favPhotoIds.filter((id) => id !== action.payload.photo
       );
       return {
         ...state,
         favPhotoIds: filtered
       };
+    }
     case ACTIONS.SET_PHOTO_DATA:
       return {
         ...state,
         photos: action.payload.photos
       };
-    case ACTIONS.SET_TOPIC_DATA:
+
+    case ACTIONS.SET_TOPIC_DATA: {
       return {
         ...state,
         topics: action.payload.topics
       };
-    case ACTIONS.SELECT_PHOTO:
+    }
+    case ACTIONS.SELECT_PHOTO: {
       return {
         ...state,
         selectedPhoto: action.payload.photo
       };
-    case ACTIONS.DISPLAY_PHOTO_DETAILS:
+    }
+    case ACTIONS.DISPLAY_PHOTO_DETAILS: {
       return {
         ...state,
         displayPhotoDetails: action.payload.display
       };
+    }
     default:
       return state;
   }
@@ -91,13 +97,13 @@ export default function useApplicationData() {
     // console.log('photo clicked', photoId);
     const findPhoto = photos.find(photo => photo.id === photoId);
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: { photo: findPhoto } });
-    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: { display: true }})
+    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: { display: true } });
   };
 
   // const closeModal = () => setModal(null);
   const closeModal = () => {
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: { photo: null } });
-    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: { display: false }})
+    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: { display: false } });
   };
 
   // define selectedPhoto for modal
