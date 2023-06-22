@@ -76,7 +76,6 @@ export default function useApplicationData() {
   // get photos from api
   useEffect(() => {
     axios(`/api/photos`)
-      // .then(response => console.log(response.data));
       .then(response => setPhotoData(response.data));
   }, []);
 
@@ -86,6 +85,12 @@ export default function useApplicationData() {
       .then(response => setTopicData(response.data));
   }, []);
 
+  // get photos by topic
+  const fetchPhotosByTopic = (topicId) => {
+    axios(`/api/topics/photos/${topicId}`)
+      .then(response => setPhotoData(response.data))
+      .catch(error => console.log(error));
+  };
 
   // reducer
   const [state, dispatch] = useReducer(reducer, appInitialState);
@@ -113,9 +118,7 @@ export default function useApplicationData() {
     dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: { display: false } });
   };
 
-  const selectedPhoto = state.photos.find((photo) => photo.id === state.selectedPhoto);
-
-  // other
+  // set and select photo and topic data
   const setPhotoData = (photos) => {
     dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: { photos } });
   };
@@ -126,12 +129,6 @@ export default function useApplicationData() {
 
   const selectTopic = (topicId) => {
     dispatch({ type: ACTIONS.SELECT_TOPIC, payload: { topicId } });
-  };
-
-  const fetchPhotosByTopic = (topicId) => {
-    axios(`/api/topics/photos/${topicId}`)
-      .then(response => setPhotoData(response.data))
-      .catch(error => console.log(error));
   };
 
   return {
