@@ -16,9 +16,9 @@ const PhotoListItem = (props) => {
   return (
     <div className='photo-list__item'>
       <PhotoFav
-      toggleFave={() => toggleFave(id)}
-      favourite={isFave}
-      isModal={false}
+        toggleFave={() => toggleFave(id)}
+        favourite={isFave}
+        isModal={false}
       />
       <img className='photo-list__image' src={imageSource.regular} onClick={handleClickPhoto}></img>
       <div className='photo-list__footer'>

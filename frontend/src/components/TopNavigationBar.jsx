@@ -15,7 +15,7 @@ const TopNavigation = (props) => {
         topics={props.topics}
         selectTopic={props.selectTopic}
         fetchPhotosByTopic={props.fetchPhotosByTopic}
-        />
+      />
       <FavBadge isFavPhotoExist={isFavPhotoExist} />
     </div>
   );
