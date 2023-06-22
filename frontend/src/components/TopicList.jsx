@@ -13,7 +13,7 @@ const TopicList = (props) => {
       id={topic.id}
       slug={topic.slug}
       title={topic.title}
-      setSelectedTopic={props.setSelectedTopic}
+      selectTopic={props.selectTopic}
       fetchPhotosByTopic={props.fetchPhotosByTopic}
     />
   ));

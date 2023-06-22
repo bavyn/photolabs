@@ -5,13 +5,13 @@ import PhotoFav from './PhotoFav';
 
 const PhotoListItem = (props) => {
 
-  const { id, imageSource, location, profile, username, favePhotos, onClickPhoto, toggleFave } = props;
+  const { id, imageSource, location, profile, username, favePhotos, openModal, toggleFave } = props;
 
   // handling error to check that favePhotos is indeed an array
   const isFave = Array.isArray(favePhotos) && favePhotos.includes(id);
 
   // open modal window
-  const handleClickPhoto = () => onClickPhoto(id);
+  const handleClickPhoto = () => openModal(id);
 
   return (
     <div className='photo-list__item'>

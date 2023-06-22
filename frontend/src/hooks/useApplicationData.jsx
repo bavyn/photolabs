@@ -124,7 +124,7 @@ export default function useApplicationData() {
     dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: { topics } });
   };
 
-  const setSelectedTopic = (topicId) => {
+  const selectTopic = (topicId) => {
     dispatch({ type: ACTIONS.SELECT_TOPIC, payload: { topicId } });
   };
 
@@ -144,7 +144,7 @@ export default function useApplicationData() {
     closeModal,
     selectedPhoto: state.selectedPhoto,
     selectedTopic: state.selectedTopic,
-    setSelectedTopic,
+    selectTopic,
     fetchPhotosByTopic
   };
 }

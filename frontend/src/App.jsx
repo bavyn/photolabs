@@ -17,7 +17,7 @@ const App = () => {
     closeModal,
     selectedPhoto,
     selectedTopic,
-    setSelectedTopic,
+    selectTopic,
     fetchPhotosByTopic
   } = useApplicationData();
 
@@ -25,17 +25,16 @@ const App = () => {
     <div className="App">
       <HomeRoute
         topics={topics}
-        onClickPhoto={openModal}
+        openModal={openModal}
         photos={photos}
         favePhotos={favePhotos}
         toggleFave={toggleFave}
         selectedTopic={selectedTopic}
-        setSelectedTopic={setSelectedTopic}
+        selectTopic={selectTopic}
         fetchPhotosByTopic={fetchPhotosByTopic}
       />
       {modal && <PhotoDetailsModal
-        onClose={closeModal}
-        photos={photos}
+        closeModal={closeModal}
         selectedPhoto={selectedPhoto}
         favePhotos={favePhotos}
         toggleFave={toggleFave}

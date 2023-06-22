@@ -5,7 +5,7 @@ import PhotoListItem from './PhotoListItem';
 
 const PhotoList = (props) => {
 
-  const { photos, favePhotos, onClickPhoto, toggleFave, selectedTopic } = props;
+  const { photos, favePhotos, openModal, toggleFave, selectedTopic } = props;
 
   const filteredPhotos = selectedTopic
     ? photos.filter(photo => photo.topic_id === (selectedTopic.id || null))
@@ -13,17 +13,17 @@ const PhotoList = (props) => {
 
   const list = filteredPhotos.map((photo) => (
     <PhotoListItem
-    key={photo.id}
-    id={photo.id}
-    imageSource={photo.urls}
-    location={photo.location}
-    profile={photo.user.profile}
-    username={photo.user.name}
-    favePhotos={favePhotos}
-    onClickPhoto={onClickPhoto}
-    toggleFave={toggleFave}
+      key={photo.id}
+      id={photo.id}
+      imageSource={photo.urls}
+      location={photo.location}
+      profile={photo.user.profile}
+      username={photo.user.name}
+      favePhotos={favePhotos}
+      openModal={openModal}
+      toggleFave={toggleFave}
     />
-  ))
+  ));
 
   return (
     <ul className="photo-list">

@@ -3,10 +3,10 @@ import React from 'react';
 import '../styles/TopicListItem.scss';
 
 const TopicListItem = (props) => {
-  const { id, title, setSelectedTopic, fetchPhotosByTopic } = props;
+  const { id, title, selectTopic, fetchPhotosByTopic } = props;
 
   const handleClickTopic = () => {
-    setSelectedTopic(id);
+    selectTopic(id);
     fetchPhotosByTopic(id);
   };
 

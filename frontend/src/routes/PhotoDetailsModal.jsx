@@ -6,14 +6,14 @@ import PhotoFav from '../components/PhotoFav';
 
 const PhotoDetailsModal = (props) => {
 
-  const { onClose, photos, selectedPhoto, favePhotos, toggleFave } = props;
+  const { closeModal, selectedPhoto, favePhotos, toggleFave } = props;
 
   const suggestedPhotos = Object.values(selectedPhoto.similar_photos);
 
   return (
     <div className='photo-details-modal'>
       <div className='photo-details-modal__header'>
-        <button className='photo-details-modal--close-button' onClick={onClose} >
+        <button className='photo-details-modal--close-button' onClick={closeModal} >
           <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clipPath="url(#clip0_428_287)">
               <path d="M14.0625 3.9375L3.9375 14.0625" stroke="black" strokeLinecap="round" strokeLinejoin="round" />

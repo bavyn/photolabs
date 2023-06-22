@@ -12,13 +12,13 @@ const HomeRoute = (props) => {
       <TopNavigation
         favePhotos={props.favePhotos}
         topics={props.topics}
-        setSelectedTopic={props.setSelectedTopic}
+        selectTopic={props.selectTopic}
         fetchPhotosByTopic={props.fetchPhotosByTopic}
       />
       <PhotoList
         photos={props.photos}
         favePhotos={props.favePhotos}
-        onClickPhoto={props.onClickPhoto}
+        openModal={props.openModal}
         toggleFave={props.toggleFave}
         selectedTopic={props.selectedTopic}
       />
