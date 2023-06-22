@@ -1,5 +1,5 @@
-import React, { useReducer } from "react";
-import photos from "../mocks/photos";
+import React, { useState, useEffect, useReducer } from "react";
+import axios from "axios";
 
 export const ACTIONS = {
   FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
@@ -67,6 +67,14 @@ function reducer(state, action) {
 
 export default function useApplicationData() {
 
+  // get photos from api
+  const [photos, setPhotos] = useState([]);
+
+  useEffect(() => {
+    axios(`/api/photos`)
+      .then(response => setPhotos(response.data));
+  }, []);
+
   // reducer
   const [state, dispatch] = useReducer(reducer, appInitialState);
 
@@ -119,6 +127,7 @@ export default function useApplicationData() {
   };
 
   return {
+    photos,
     favePhotos: state.favPhotoIds,
     toggleFave,
     modal: state.displayPhotoDetails,
