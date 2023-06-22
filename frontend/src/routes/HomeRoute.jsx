@@ -10,14 +10,17 @@ const HomeRoute = (props) => {
   return (
     <div className="home-route">
       <TopNavigation
-      favePhotos={props.favePhotos}
-      topics={props.topics}
+        favePhotos={props.favePhotos}
+        topics={props.topics}
+        setSelectedTopic={props.setSelectedTopic}
+        fetchPhotosByTopic={props.fetchPhotosByTopic}
       />
       <PhotoList
-      photos={props.photos}
-      favePhotos={props.favePhotos}
-      onClickPhoto={props.onClickPhoto}
-      toggleFave={props.toggleFave}
+        photos={props.photos}
+        favePhotos={props.favePhotos}
+        onClickPhoto={props.onClickPhoto}
+        toggleFave={props.toggleFave}
+        selectedTopic={props.selectedTopic}
       />
     </div>
   );

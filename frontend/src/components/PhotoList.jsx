@@ -5,9 +5,13 @@ import PhotoListItem from './PhotoListItem';
 
 const PhotoList = (props) => {
 
-  const { photos, favePhotos, onClickPhoto, toggleFave } = props;
+  const { photos, favePhotos, onClickPhoto, toggleFave, selectedTopic } = props;
 
-  const list = photos.map((photo) => (
+  const filteredPhotos = selectedTopic
+    ? photos.filter(photo => photo.topic_id === (selectedTopic.id || null))
+    : photos;
+
+  const list = filteredPhotos.map((photo) => (
     <PhotoListItem
     key={photo.id}
     id={photo.id}

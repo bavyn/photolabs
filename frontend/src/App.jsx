@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 
 import './App.scss';
 import HomeRoute from './routes/HomeRoute';
@@ -8,24 +7,18 @@ import useApplicationData from './hooks/useApplicationData';
 
 const App = () => {
 
-  const [topics, setTopics] = useState([]);
-
-  useEffect(() => {
-    axios(`/api/topics`)
-      .then(response => setTopics(response.data));
-  }, []);
-
-
   const {
     photos,
+    topics,
     favePhotos,
     toggleFave,
     modal,
     openModal,
     closeModal,
     selectedPhoto,
-    setPhotoData,
-    setTopicData,
+    selectedTopic,
+    setSelectedTopic,
+    fetchPhotosByTopic
   } = useApplicationData();
 
   return (
@@ -36,6 +29,9 @@ const App = () => {
         photos={photos}
         favePhotos={favePhotos}
         toggleFave={toggleFave}
+        selectedTopic={selectedTopic}
+        setSelectedTopic={setSelectedTopic}
+        fetchPhotosByTopic={fetchPhotosByTopic}
       />
       {modal && <PhotoDetailsModal
         onClose={closeModal}

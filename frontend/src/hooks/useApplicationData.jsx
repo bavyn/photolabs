@@ -7,12 +7,14 @@ export const ACTIONS = {
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SELECT_PHOTO: 'SELECT_PHOTO',
-  DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS'
+  DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
+  SELECT_TOPIC: 'SELECT_TOPIC'
 };
 
 const appInitialState = {
   favPhotoIds: [],
   selectedPhoto: null,
+  selectedTopic: null,
   photos: [],
   topics: [],
   displayPhotoDetails: false
@@ -58,22 +60,32 @@ function reducer(state, action) {
         displayPhotoDetails: action.payload.display
       };
     }
+    case ACTIONS.SELECT_TOPIC: {
+      return {
+        ...state,
+        selectedTopic: action.payload.topic
+      };
+    }
     default:
       return state;
   }
 }
 
-
-
 export default function useApplicationData() {
 
   // get photos from api
-  const [photos, setPhotos] = useState([]);
-
   useEffect(() => {
     axios(`/api/photos`)
-      .then(response => setPhotos(response.data));
+      // .then(response => console.log(response.data));
+      .then(response => setPhotoData(response.data));
   }, []);
+
+  // get topics from api
+  useEffect(() => {
+    axios(`/api/topics`)
+      .then(response => setTopicData(response.data));
+  }, []);
+
 
   // reducer
   const [state, dispatch] = useReducer(reducer, appInitialState);
@@ -91,7 +103,7 @@ export default function useApplicationData() {
 
   // modal
   const openModal = (photoId) => {
-    const findPhoto = photos.find(photo => photo.id === photoId);
+    const findPhoto = state.photos.find(photo => photo.id === photoId);
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: { photo: findPhoto } });
     dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: { display: true } });
   };
@@ -101,7 +113,7 @@ export default function useApplicationData() {
     dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: { display: false } });
   };
 
-  const selectedPhoto = photos.find((photo) => photo.id === state.selectedPhoto);
+  const selectedPhoto = state.photos.find((photo) => photo.id === state.selectedPhoto);
 
   // other
   const setPhotoData = (photos) => {
@@ -112,15 +124,27 @@ export default function useApplicationData() {
     dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: { topics } });
   };
 
+  const setSelectedTopic = (topicId) => {
+    dispatch({ type: ACTIONS.SELECT_TOPIC, payload: { topicId } });
+  };
+
+  const fetchPhotosByTopic = (topicId) => {
+    axios(`/api/topics/photos/${topicId}`)
+      .then(response => setPhotoData(response.data))
+      .catch(error => console.log(error));
+  };
+
   return {
-    photos,
+    photos: state.photos,
+    topics: state.topics,
     favePhotos: state.favPhotoIds,
     toggleFave,
     modal: state.displayPhotoDetails,
     openModal,
     closeModal,
     selectedPhoto: state.selectedPhoto,
-    setPhotoData,
-    setTopicData,
+    selectedTopic: state.selectedTopic,
+    setSelectedTopic,
+    fetchPhotosByTopic
   };
 }
