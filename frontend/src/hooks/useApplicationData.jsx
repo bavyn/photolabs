@@ -7,7 +7,8 @@ export const ACTIONS = {
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SELECT_PHOTO: 'SELECT_PHOTO',
-  DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
+  DISPLAY_PHOTO_DETAILS_MODAL: 'DISPLAY_PHOTO_DETAILS_MODAL',
+  DISPLAY_LIKED_PHOTOS_MODAL: 'DISPLAY_LIKED_PHOTOS_MODAL',
   SELECT_TOPIC: 'SELECT_TOPIC'
 };
 
@@ -17,7 +18,8 @@ const appInitialState = {
   selectedTopic: null,
   photos: [],
   topics: [],
-  displayPhotoDetails: false
+  displayPhotoDetailsModal: false,
+  displayLikedPhotosModal: false,
 };
 
 function reducer(state, action) {
@@ -54,10 +56,16 @@ function reducer(state, action) {
         selectedPhoto: action.payload.photo
       };
     }
-    case ACTIONS.DISPLAY_PHOTO_DETAILS: {
+    case ACTIONS.DISPLAY_PHOTO_DETAILS_MODAL: {
       return {
         ...state,
-        displayPhotoDetails: action.payload.display
+        displayPhotoDetailsModal: action.payload.display
+      };
+    }
+    case ACTIONS.DISPLAY_LIKED_PHOTOS_MODAL: {
+      return {
+        ...state,
+        displayLikedPhotosModal: action.payload.display
       };
     }
     case ACTIONS.SELECT_TOPIC: {
@@ -110,12 +118,13 @@ export default function useApplicationData() {
   const openModal = (photoId) => {
     const findPhoto = state.photos.find(photo => photo.id === photoId);
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: { photo: findPhoto } });
-    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: { display: true } });
+    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS_MODAL, payload: { display: true } });
+    dispatch({ type: ACTIONS.DISPLAY_LIKED_PHOTOS_MODAL, payload: { display: false } });
   };
 
   const closeModal = () => {
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: { photo: null } });
-    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: { display: false } });
+    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS_MODAL, payload: { display: false } });
   };
 
   // set and select photo and topic data
@@ -131,17 +140,30 @@ export default function useApplicationData() {
     dispatch({ type: ACTIONS.SELECT_TOPIC, payload: { topicId } });
   };
 
+  // open and close liked photos modal
+  const openLikedPhotosModal = () => {
+    dispatch({ type: ACTIONS.DISPLAY_LIKED_PHOTOS_MODAL, payload: { display: true } });
+    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS_MODAL, payload: { display: false } });
+  };
+
+  const closeLikedPhotosModal = () => {
+    dispatch({ type: ACTIONS.DISPLAY_LIKED_PHOTOS_MODAL, payload: { display: false } });
+  };
+
   return {
     photos: state.photos,
     topics: state.topics,
     favePhotos: state.favPhotoIds,
     toggleFave,
-    modal: state.displayPhotoDetails,
+    displayPhotoDetailsModal: state.displayPhotoDetailsModal,
+    displayLikedPhotosModal: state.displayLikedPhotosModal,
     openModal,
     closeModal,
     selectedPhoto: state.selectedPhoto,
     selectedTopic: state.selectedTopic,
     selectTopic,
-    fetchPhotosByTopic
+    fetchPhotosByTopic,
+    openLikedPhotosModal,
+    closeLikedPhotosModal
   };
 }

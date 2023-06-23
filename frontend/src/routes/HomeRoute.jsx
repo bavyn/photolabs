@@ -14,6 +14,7 @@ const HomeRoute = (props) => {
         topics={props.topics}
         selectTopic={props.selectTopic}
         fetchPhotosByTopic={props.fetchPhotosByTopic}
+        openModal={props.openLikedPhotosModal}
       />
       <PhotoList
         photos={props.photos}

@@ -4,6 +4,7 @@ import './App.scss';
 import HomeRoute from './routes/HomeRoute';
 import PhotoDetailsModal from './routes/PhotoDetailsModal';
 import useApplicationData from './hooks/useApplicationData';
+import LikedPhotosModal from './routes/LikedPhotosModal';
 
 const App = () => {
 
@@ -12,13 +13,16 @@ const App = () => {
     topics,
     favePhotos,
     toggleFave,
-    modal,
+    displayPhotoDetailsModal,
+    displayLikedPhotosModal,
     openModal,
     closeModal,
     selectedPhoto,
     selectedTopic,
     selectTopic,
-    fetchPhotosByTopic
+    fetchPhotosByTopic,
+    openLikedPhotosModal,
+    closeLikedPhotosModal
   } = useApplicationData();
 
   return (
@@ -32,12 +36,19 @@ const App = () => {
         selectedTopic={selectedTopic}
         selectTopic={selectTopic}
         fetchPhotosByTopic={fetchPhotosByTopic}
+        openLikedPhotosModal={openLikedPhotosModal}
       />
-      {modal && <PhotoDetailsModal
+      {displayPhotoDetailsModal && <PhotoDetailsModal
         closeModal={closeModal}
         selectedPhoto={selectedPhoto}
         favePhotos={favePhotos}
         toggleFave={toggleFave}
+      />}
+      {displayLikedPhotosModal && <LikedPhotosModal
+        closeModal={closeLikedPhotosModal}
+        favePhotos={favePhotos}
+        toggleFave={toggleFave}
+        photos={photos}
       />}
     </div>
   );

@@ -16,7 +16,11 @@ const TopNavigation = (props) => {
         selectTopic={props.selectTopic}
         fetchPhotosByTopic={props.fetchPhotosByTopic}
       />
-      <FavBadge isFavPhotoExist={isFavPhotoExist} />
+      <FavBadge
+        isFavPhotoExist={isFavPhotoExist}
+        openModal={props.openModal}
+        favePhotos={props.favePhotos}
+      />
     </div>
   );
 };
