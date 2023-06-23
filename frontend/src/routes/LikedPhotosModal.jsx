@@ -9,6 +9,7 @@ const LikedPhotos = (props) => {
 
   const likedPhotos = photos.filter(photo => favePhotos.includes(photo.id));
 
+  const noLikedPhotos = likedPhotos.length === 0;
 
   return (
     <div className='liked-photos-modal'>
@@ -31,11 +32,15 @@ const LikedPhotos = (props) => {
       <h2 className='liked-photos-modal__header'>Favourite Photos</h2>
 
       <div className='liked-photos-modal__images'>
-        <PhotoList
-          photos={likedPhotos}
-          favePhotos={favePhotos}
-          toggleFave={toggleFave}
-        />
+        {noLikedPhotos ? (
+          <p>Uh oh! You haven&apos;t liked any photos yet :(</p>
+        ) : (
+          <PhotoList
+            photos={likedPhotos}
+            favePhotos={favePhotos}
+            toggleFave={toggleFave}
+          />
+        )}
       </div>
     </div>
   );

@@ -31,7 +31,10 @@
 }
 
 .liked-photos-modal__images {
+  display: flex;
   margin-left: 36px;
   margin-right: 36px;
   margin-top: 2px;
+  justify-content: center;
+  align-items: center;
 }
